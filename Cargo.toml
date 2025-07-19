@@ -1,0 +1,8 @@
+[package]
+name = "waybar-sysinfo"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde_json = { version = "1.0.141", features = ["raw_value"] }
+sysinfo = { version = "0.36.1", features = ["linux-netdevs", "linux-tmpfs"] }
