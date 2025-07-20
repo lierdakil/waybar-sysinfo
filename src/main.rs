@@ -9,7 +9,10 @@ fn progress_bar(value: f32, width: usize) -> String {
     const BLOCKS: [&str; 9] = [" ", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"];
     let bar = String::from_iter(std::iter::repeat_n('█', filled));
     let partial = if width > filled { BLOCKS[partial] } else { "" };
-    let rest = String::from_iter(std::iter::repeat_n(' ', width - filled));
+    let rest = String::from_iter(std::iter::repeat_n(
+        ' ',
+        width.saturating_sub(filled).saturating_sub(1),
+    ));
 
     format!(r#"[{bar}{partial}{rest}]"#)
 }
